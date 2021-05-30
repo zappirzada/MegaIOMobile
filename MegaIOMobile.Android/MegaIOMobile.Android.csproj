@@ -16,7 +16,6 @@
     <AndroidManifest>Properties\AndroidManifest.xml</AndroidManifest>
     <MonoAndroidResourcePrefix>Resources</MonoAndroidResourcePrefix>
     <MonoAndroidAssetsPrefix>Assets</MonoAndroidAssetsPrefix>
-    <AndroidUseLatestPlatformSdk>false</AndroidUseLatestPlatformSdk>
     <TargetFrameworkVersion>v11.0</TargetFrameworkVersion>
     <AndroidEnableSGenConcurrent>true</AndroidEnableSGenConcurrent>
     <AndroidUseAapt2>true</AndroidUseAapt2>
@@ -88,7 +87,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MegaIOMobile\MegaIOMobile.csproj">
-      <Project>{54655A63-8A8A-407B-8535-5F2D29895B4B}</Project>
+      <Project>{9BF2874D-1BCA-4E7C-ACE7-AE979AE1C060}</Project>
       <Name>MegaIOMobile</Name>
     </ProjectReference>
   </ItemGroup>
