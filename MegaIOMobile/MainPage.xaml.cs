@@ -18,17 +18,24 @@ namespace MegaIOMobile
         }
         void Main()
         {
-            var client = new MegaApiClient();
-            client.Login("zap_pirzada@hotmail.com", "***********");
+            try
+            {
+                var client = new MegaApiClient();
+                client.Login("zap_pirzada@hotmail.com", "Passw0rd");
 
-            // GetNodes retrieves all files/folders metadata from Mega
-            // so this method can be time consuming
-            IEnumerable<INode> nodes = client.GetNodes();
+                // GetNodes retrieves all files/folders metadata from Mega
+                // so this method can be time consuming
+                IEnumerable<INode> nodes = client.GetNodes();
 
-            INode parent = nodes.Single(n => n.Type == NodeType.Root);
-            DisplayNodesRecursive(nodes, parent);
+                INode parent = nodes.Single(n => n.Type == NodeType.Root);
+                DisplayNodesRecursive(nodes, parent);
 
-            client.Logout();
+                client.Logout();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
         }
 
         void DisplayNodesRecursive(IEnumerable<INode> nodes, INode parent, int level = 0)
@@ -36,7 +43,7 @@ namespace MegaIOMobile
             IEnumerable<INode> children = nodes.Where(x => x.ParentId == parent.Id);
             foreach (INode child in children)
             {
-                string infos = $"- {child.Name} - {FileSizeFormatter.FormatSize(child.Size)} - {child.CreationDate}";
+                string infos = $"> {child.Name} - {FileSizeFormatter.FormatSize(child.Size)} - {child.CreationDate}";
                 Console.WriteLine(infos.PadLeft(infos.Length + level, '\t'));
                 Device.BeginInvokeOnMainThread(() =>
                 {
